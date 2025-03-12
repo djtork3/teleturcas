@@ -8,7 +8,7 @@ const seriesData = [
     {
         id: 'una-nueva-vida',
         name: 'Una Nueva Vida',
-        poster: 'https://via.placeholder.com/300x400.jpg?text=Una+Nueva+Vida',
+        poster: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zhTDZtUfpB8sCbCgjqYKsxfY2os.jpg',
         description: 'Una Nueva Vida sigue la historia de una joven enfrentándose a los retos del amor y la familia.',
         genres: ['Drama', 'Romance'],
         released: '2023-01-01',
@@ -16,7 +16,7 @@ const seriesData = [
         director: 'Director Name',
         runtime: '45 min',
         rating: '8.5',
-        trailer: 'https://www.youtube.com/watch?v=example',
+        trailer: 'https://www.youtube.com/watch?v=8442qABMQ1s',
         episodes: [
             {
                 id: 'una-nueva-vida:1:26',
@@ -24,7 +24,7 @@ const seriesData = [
                 season: 1,
                 episode: 26,
                 magnet: 'magnet:?xt=urn:btih:7c5c6b1ebc256cf3f28a29cda488a3ba173651d1&dn=Una%20nueva%20vida%20%5BHDTV%5D%5BCap.126%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Fns-1.x-fins.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fdiscord.heihachi.pw%3A6969%2Fannounce&tr=http%3A%2F%2Fwww.torrentsnipe.info%3A2701%2Fannounce&tr=http%3A%2F%2Fwww.genesis-sp.org%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.vanitycore.co%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.lintk.me%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.ipv6tracker.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dmcomic.org%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.bt-hash.com%3A80%2Fannounce&tr=http%3A%2F%2Ft.jaekr.sh%3A6969%2Fannounce&tr=http%3A%2F%2Fhome.yxgz.club%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.bt4g.com%3A443%2Fannounce',
-                poster: 'https://via.placeholder.com/300x400.jpg?text=Episodio+26',
+                poster: 'https://media.themoviedb.org/t/p/w227_and_h127_bestv2/eoaVuUygFctizRDJezJz3d6mNyP.jpg',
                 description: 'Episodio 26 de la temporada 1 de "Una Nueva Vida".',
                 released: '2025-03-09'
             },
@@ -34,9 +34,9 @@ const seriesData = [
                 season: 1,
                 episode: 27,
                 magnet: 'magnet:?xt=urn:btih:6001a932ab1f5c0123b7bf231fb50333ad1b08eb&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fns-1.x-fins.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fleet-tracker.moe%3A1337%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Fwww.torrentsnipe.info%3A2701%2Fannounce&tr=http%3A%2F%2Ftracker810.xyz%3A11450%2Fannounce&tr=http%3A%2F%2Ftracker.xiaoduola.xyz%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.vanitycore.co%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.moxing.party%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.lintk.me%3A2710%2Fannounce&tr=https%3A%2F%2Ftracker.bt4g.com%3A443%2Fannounce',
-                poster: 'https://via.placeholder.com/300x400.jpg?text=Episodio+27',
+                poster: 'https://media.themoviedb.org/t/p/w227_and_h127_bestv2/aOvQsM2hy3FKXEQfqUqDQbzQekh.jpg',
                 description: 'Episodio 27 de la temporada 1 de "Una Nueva Vida".',
-                released: '2023-03-16'
+                released: '2025-03-16'
             }
         ]
     }
@@ -46,7 +46,7 @@ const seriesData = [
 // 📌 Configuración del addon
 const builder = new addonBuilder({
     id: 'org.telenovelasturcas',
-    version: '1.0.4',
+    version: '2.0.0',
     name: 'Telenovelas Turcas',
     description: 'Disfruta de tus telenovelas turcas favoritas',
     catalogs: [
