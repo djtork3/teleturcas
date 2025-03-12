@@ -1,0 +1,21 @@
+{
+  "name": "stremio-torrent-catalogo",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "addon.js",
+  "scripts": {
+    "start": "node addon.js"
+  },
+  "dependencies": {
+<<<<<<< HEAD
+    "parse-torrent": "^11.0.18",
+    "stremio-addon-sdk": "^1.6.10",
+=======
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "parse-torrent": "^11.0.18",
+    "stremio-addon-sdk": "^1.6.10",
+    "util": "^0.12.5"
+>>>>>>> f90bcefbd3a9020b054b1a91a97eea73c6310bd2
+  }
+}
