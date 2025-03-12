@@ -3,35 +3,50 @@ import parseTorrent from 'parse-torrent';
 
 const { addonBuilder, serveHTTP } = pkg;
 
-// 📌 Base de datos de torrents (Serie: Una Nueva Vida, Temporada 1)
-const torrents = [
+// 📌 Base de datos de series
+const seriesData = [
     {
-        id: 'una-nueva-vida:1:26',
-        title: 'Una Nueva Vida - Temporada 1 Episodio 26',
-        season: 1,
-        episode: 26,
-        magnet: 'magnet:?xt=urn:btih:7c5c6b1ebc256cf3f28a29cda488a3ba173651d1&dn=Una%20nueva%20vida%20%5BHDTV%5D%5BCap.126%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Fns-1.x-fins.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fdiscord.heihachi.pw%3A6969%2Fannounce&tr=http%3A%2F%2Fwww.torrentsnipe.info%3A2701%2Fannounce&tr=http%3A%2F%2Fwww.genesis-sp.org%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.vanitycore.co%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.lintk.me%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.ipv6tracker.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dmcomic.org%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.bt-hash.com%3A80%2Fannounce&tr=http%3A%2F%2Ft.jaekr.sh%3A6969%2Fannounce&tr=http%3A%2F%2Fhome.yxgz.club%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.bt4g.com%3A443%2Fannounce',
-        poster: 'https://media.themoviedb.org/t/p/w227_and_h127_bestv2/eoaVuUygFctizRDJezJz3d6mNyP.jpg', // URL de portada alternativa (reemplaza con una válida)
-        description: 'Episodio 26 de la temporada 1 de "Una Nueva Vida".',
-        released: '2025-03-09' // Fecha basada en la captura
-    },
-    {
-        id: 'una-nueva-vida:1:27',
-        title: 'Una Nueva Vida - Temporada 1 Episodio 27',
-        season: 1,
-        episode: 27,
-        magnet: 'magnet:?xt=urn:btih:6001a932ab1f5c0123b7bf231fb50333ad1b08eb&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fns-1.x-fins.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fleet-tracker.moe%3A1337%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Fwww.torrentsnipe.info%3A2701%2Fannounce&tr=http%3A%2F%2Ftracker810.xyz%3A11450%2Fannounce&tr=http%3A%2F%2Ftracker.xiaoduola.xyz%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.vanitycore.co%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.moxing.party%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.lintk.me%3A2710%2Fannounce&tr=https%3A%2F%2Ftracker.bt4g.com%3A443%2Fannounce',
-        poster: 'https://media.themoviedb.org/t/p/w227_and_h127_bestv2/aOvQsM2hy3FKXEQfqUqDQbzQekh.jpg', // URL de portada alternativa (reemplaza con una válida)
-        description: 'Episodio 27 de la temporada 1 de "Una Nueva Vida".',
-        released: '2023-03-16' // Fecha basada en la captura
+        id: 'una-nueva-vida',
+        name: 'Una Nueva Vida',
+        poster: 'https://via.placeholder.com/300x400.jpg?text=Una+Nueva+Vida',
+        description: 'Una Nueva Vida sigue la historia de una joven enfrentándose a los retos del amor y la familia.',
+        genres: ['Drama', 'Romance'],
+        released: '2023-01-01',
+        cast: ['Actor 1', 'Actor 2'],
+        director: 'Director Name',
+        runtime: '45 min',
+        rating: '8.5',
+        trailer: 'https://www.youtube.com/watch?v=example',
+        episodes: [
+            {
+                id: 'una-nueva-vida:1:26',
+                title: 'Una Nueva Vida - Temporada 1 Episodio 26',
+                season: 1,
+                episode: 26,
+                magnet: 'magnet:?xt=urn:btih:7c5c6b1ebc256cf3f28a29cda488a3ba173651d1&dn=Una%20nueva%20vida%20%5BHDTV%5D%5BCap.126%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Fns-1.x-fins.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fdiscord.heihachi.pw%3A6969%2Fannounce&tr=http%3A%2F%2Fwww.torrentsnipe.info%3A2701%2Fannounce&tr=http%3A%2F%2Fwww.genesis-sp.org%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.vanitycore.co%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.lintk.me%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.ipv6tracker.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dmcomic.org%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.bt-hash.com%3A80%2Fannounce&tr=http%3A%2F%2Ft.jaekr.sh%3A6969%2Fannounce&tr=http%3A%2F%2Fhome.yxgz.club%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.bt4g.com%3A443%2Fannounce',
+                poster: 'https://via.placeholder.com/300x400.jpg?text=Episodio+26',
+                description: 'Episodio 26 de la temporada 1 de "Una Nueva Vida".',
+                released: '2025-03-09'
+            },
+            {
+                id: 'una-nueva-vida:1:27',
+                title: 'Una Nueva Vida - Temporada 1 Episodio 27',
+                season: 1,
+                episode: 27,
+                magnet: 'magnet:?xt=urn:btih:6001a932ab1f5c0123b7bf231fb50333ad1b08eb&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fns-1.x-fins.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fleet-tracker.moe%3A1337%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Fwww.torrentsnipe.info%3A2701%2Fannounce&tr=http%3A%2F%2Ftracker810.xyz%3A11450%2Fannounce&tr=http%3A%2F%2Ftracker.xiaoduola.xyz%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.vanitycore.co%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.moxing.party%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.lintk.me%3A2710%2Fannounce&tr=https%3A%2F%2Ftracker.bt4g.com%3A443%2Fannounce',
+                poster: 'https://via.placeholder.com/300x400.jpg?text=Episodio+27',
+                description: 'Episodio 27 de la temporada 1 de "Una Nueva Vida".',
+                released: '2023-03-16'
+            }
+        ]
     }
-    // Agrega más episodios aquí con sus portadas y fechas
+    // Agrega más series aquí
 ];
 
 // 📌 Configuración del addon
 const builder = new addonBuilder({
     id: 'org.telenovelasturcas',
-    version: '2.0.0',
+    version: '1.0.4',
     name: 'Telenovelas Turcas',
     description: 'Disfruta de tus telenovelas turcas favoritas',
     catalogs: [
@@ -51,53 +66,59 @@ const builder = new addonBuilder({
 builder.defineMetaHandler((args) => {
     console.log('Meta handler args:', args);
 
-    // Si Stremio solicita metadatos para la serie en general (ID: una-nueva-vida)
-    if (args.id === 'una-nueva-vida') {
-        const videos = torrents.map(t => ({
-            id: t.id,
-            season: t.season,
-            episode: t.episode,
-            title: t.title,
-            poster: t.poster, // Portada específica del episodio
-            released: t.released // Fecha de estreno específica
+    // Buscar la serie
+    const series = seriesData.find(s => s.id === args.id);
+    if (series) {
+        const videos = series.episodes.map(ep => ({
+            id: ep.id,
+            season: ep.season,
+            episode: ep.episode,
+            title: ep.title,
+            poster: ep.poster,
+            released: ep.released
         }));
 
         return Promise.resolve({
             meta: {
-                id: 'una-nueva-vida',
+                id: series.id,
                 type: 'series',
-                name: 'Una Nueva Vida',
-                poster: 'https://pics.filmaffinity.com/Una_nueva_vida_Serie_de_TV-535836774-large.jpg',
-                description: 'Una Nueva Vida sigue la historia de una joven enfrentándose a los retos del amor y la familia.',
-                genres: ['Drama', 'Romance'],
-                released: '2023-01-01',
-                background: 'https://pics.filmaffinity.com/Una_nueva_vida_Serie_de_TV-535836774-large.jpg',
-                logo: 'https://pics.filmaffinity.com/Una_nueva_vida_Serie_de_TV-535836774-large.jpg',
+                name: series.name,
+                poster: series.poster,
+                description: series.description,
+                genres: series.genres,
+                released: series.released,
+                cast: series.cast,
+                director: series.director,
+                runtime: series.runtime,
+                rating: series.rating,
+                trailer: series.trailer,
+                background: series.poster,
+                logo: series.poster,
                 videos: videos
             }
         });
     }
 
-    // Si Stremio solicita metadatos para un episodio específico
-    const torrent = torrents.find(t => t.id === args.id);
-    if (!torrent) {
+    // Buscar un episodio específico
+    const episode = seriesData.flatMap(s => s.episodes).find(ep => ep.id === args.id);
+    if (!episode) {
         console.log('❌ No se encontró metadatos para:', args.id);
         return Promise.resolve({ meta: null });
     }
 
     return Promise.resolve({
         meta: {
-            id: torrent.id,
+            id: episode.id,
             type: 'series',
             name: 'Una Nueva Vida',
-            poster: torrent.poster, // Portada específica del episodio
-            description: torrent.description,
-            season: torrent.season,
-            episode: torrent.episode,
+            poster: episode.poster,
+            description: episode.description,
+            season: episode.season,
+            episode: episode.episode,
             genres: ['Drama', 'Romance'],
-            released: torrent.released, // Fecha de estreno específica
-            background: torrent.poster,
-            logo: torrent.poster
+            released: episode.released,
+            background: episode.poster,
+            logo: episode.poster
         }
     });
 });
@@ -105,23 +126,23 @@ builder.defineMetaHandler((args) => {
 // 📌 Manejador de streams con WebTorrent
 builder.defineStreamHandler(async (args) => {
     console.log('Stream handler args:', args);
-    const torrent = torrents.find(t => t.id === args.id);
+    const episode = seriesData.flatMap(s => s.episodes).find(ep => ep.id === args.id);
     
-    if (!torrent) {
+    if (!episode) {
         console.log('❌ No se encontró un torrent para:', args.id);
         return Promise.resolve({ streams: [] });
     }
 
-    console.log('✅ Torrent encontrado:', torrent);
+    console.log('✅ Torrent encontrado:', episode);
 
     let infoHash;
     try {
-        const parsed = await parseTorrent(torrent.magnet);
+        const parsed = await parseTorrent(episode.magnet);
         infoHash = parsed.infoHash;
         console.log('🔍 InfoHash extraído:', infoHash);
     } catch (error) {
         console.log('❌ Error al parsear torrent:', error);
-        infoHash = torrent.magnet.match(/btih:([a-fA-F0-9]+)/)?.[1];
+        infoHash = episode.magnet.match(/btih:([a-fA-F0-9]+)/)?.[1];
         console.log('⚠️ Usando regex para infoHash:', infoHash);
     }
 
@@ -131,7 +152,7 @@ builder.defineStreamHandler(async (args) => {
     }
 
     const streams = [{
-        title: torrent.title,
+        title: episode.title,
         infoHash: infoHash,
         behaviorHints: { bingeGroup: 'una-nueva-vida' }
     }];
@@ -145,15 +166,15 @@ builder.defineStreamHandler(async (args) => {
 builder.defineCatalogHandler((args) => {
     console.log('Catalog handler args:', args);
     if (args.type === 'series' && args.id === 'telenovelas-turcas-catalog') {
-        const metas = [{
-            id: 'una-nueva-vida',
+        const metas = seriesData.map(series => ({
+            id: series.id,
             type: 'series',
-            name: 'Una Nueva Vida',
-            poster: 'https://pics.filmaffinity.com/Una_nueva_vida_Serie_de_TV-535836774-large.jpg',
-            description: 'Una Nueva Vida sigue la historia de una joven enfrentándose a los retos del amor y la familia.',
-            genres: ['Drama', 'Romance'],
-            released: '2023-01-01'
-        }];
+            name: series.name,
+            poster: series.poster,
+            description: series.description,
+            genres: series.genres,
+            released: series.released
+        }));
 
         console.log('📋 Catalog returning:', metas); 
 
@@ -163,6 +184,6 @@ builder.defineCatalogHandler((args) => {
 });
 
 // 📌 Iniciar el servidor HTTP
-serveHTTP(builder.getInterface(), { port: process.env.PORT || 5000 });
+serveHTTP(builder.getInterface(), { port: process.env.PORT || 7000 });
 
-console.log('📡 Addon funcionando en: http://127.0.0.1:5000/manifest.json');
+console.log('📡 Addon funcionando en: http://127.0.0.1:7000/manifest.json');
